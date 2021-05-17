@@ -30,10 +30,13 @@
         [ result addObjectsFromArray: subString ];
     } else {
         [ subNumber sortUsingSelector:@selector(compare:)];
-        [ result addObjectsFromArray: subNumber ];
         [ subString sortUsingSelector:@selector(compare:)];
-        [ subString reverseObjectEnumerator];
-        [ result addObjectsFromArray: subString ];
+        NSArray *temp = [[ subString reverseObjectEnumerator] allObjects ];
+        [ result  addObject: subNumber ];
+        [ result  addObject: temp ];
+        
+        //[ result addObjectsFromArray: subNumber ];
+        //[ result addObjectsFromArray: subString ];
         
     }
     NSLog(@" Firs array (NSString) : %@\nSecond array (NSNumber) : %@", subString,  subNumber);
